@@ -1,0 +1,38 @@
+{
+  "name": "sessions-y-autenticacion-en-expressjs-alejandro-raul-35l2-p5",
+  "version": "0.0.1",
+  "description": "Sessions y autentificacion en ExpressJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ULL-ESIT-DSI-1617/sessions-y-autenticacion-en-expressjs-alejandro-raul-35l2-p5.git"
+  },
+  "keywords": [
+    "gh-pages",
+    "expressjs",
+    "cookies",
+    "sessions"
+  ],
+  "author": "alejandro-raul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ULL-ESIT-DSI-1617/sessions-y-autenticacion-en-expressjs-alejandro-raul-35l2-p5/issues"
+  },
+  "homepage": "https://github.com/ULL-ESIT-DSI-1617/sessions-y-autenticacion-en-expressjs-alejandro-raul-35l2-p5#readme",
+  "devDependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.0",
+    "express-session": "^1.15.1",
+    "gh-pages": "^0.3.1",
+    "gitbook": "^2.1.0",
+    "gitbook-cli": "^0.3.4",
+    "pbkdf2-password": "^1.2.1"
+  }
+}
