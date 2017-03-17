@@ -1,0 +1,3 @@
+# MarkDown y GitBook
+
+Gitbook es un paquete de node que permite construir libros para la documentación de un proyecto mediante **Github/Git** y ficheros Markdown. También se puede utilizar Gitbook mediante su página web oficial, donde se inicia sesión mediante Github, Facebook, Twitter o Google+. Para la creación de un libro, basta con crear un nuevo libro dentro de la plataforma, añadir un fichero README.md y un SUMMARY.md y posteriormente crear los archivos Markdown correspondiente, guardar los cambios y previsualizar el libro en su enlace correspondiente.
