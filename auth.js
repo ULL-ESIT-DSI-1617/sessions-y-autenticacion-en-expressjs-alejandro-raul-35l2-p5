@@ -28,12 +28,12 @@ app.set('views', __dirname + '/views');
 let instructions = `
 Visit these urls in the browser:
 <ul>
-  <li> <a href="http://localhost:8080/login">localhost:8080/login</a> </li>
-  <li> <a href="http://localhost:8080/content">localhost:8080/content</a> </li>
-  <li> <a href="http://localhost:8080/content/git.html">localhost:8080/content/git.html</a> </li>
-  <li> <a href="http://localhost:8080/content/cloud9.html">localhost:8080/content/cloud9.html</a> </li>
-  <li> <a href="http://localhost:8080/content/sessionsexpress.html">localhost:8080/content/sessionsexpress.html</a> </li>
-  <li> <a href="http://localhost:8080/logout">localhost:8080/logout</a> </li>
+  <li> <a href="http://localhost:8085/login">localhost:8085/login</a> </li>
+  <li> <a href="http://localhost:8085/content">localhost:8085/content</a> </li>
+  <li> <a href="http://localhost:8085/content/git.html">localhost:8085/content/git.html</a> </li>
+  <li> <a href="http://localhost:8085/content/cloud9.html">localhost:8085/content/cloud9.html</a> </li>
+  <li> <a href="http://localhost:8085/content/sessionsexpress.html">localhost:8085/content/sessionsexpress.html</a> </li>
+  <li> <a href="http://localhost:8085/logout">localhost:8085/logout</a> </li>
 </ul>
 `;
 
