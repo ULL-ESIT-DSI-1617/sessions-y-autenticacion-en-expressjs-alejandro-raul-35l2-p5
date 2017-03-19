@@ -9,14 +9,17 @@ let cookieParser = require('cookie-parser');
 let path = require('path');
 let util = require("util");
 
+let jsonfile = require('jsonfile')
 let users = require('./users.json');
+let myfile = './users.json';
+
+
 let bodyParser = require('body-parser');
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.set('port', (process.env.PORT))
+
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -65,15 +68,18 @@ app.get('/login', function(req, res){
 
 app.post('/login', function(req, res){
   console.log(req.body);
+  
   if (!req.body.username || !req.body.password) {
     console.log('login failed');
     res.send('login failed');    
-  } else if(req.body.username in users  && 
+  } 
+  else if(req.body.username in users  && 
             bcrypt.compareSync(req.body.password, users[req.body.username])) {
     req.session.user = req.body.username;
     req.session.admin = true;
     res.send(layout("login success! user "+req.session.user));
-  } else {
+  } 
+  else {
     console.log(`login ${util.inspect(req.body)} failed`);    
     res.send(layout(`login ${util.inspect(req.body)} failed. You are ${req.session.user || 'not logged'}`));    
   }
@@ -88,6 +94,32 @@ app.get('/', function(req, res) {
 app.get('/logout', function(req, res){
   req.session.destroy();
   res.render('logout');
+});
+
+
+// vista para cambiar de contraseña
+app.get('/changepassword', function(req, res){
+  res.render('changepassword');
+});
+
+app.post('/changepassword', function(req, res){
+  console.log(req.body);
+  if (!req.body.username || !req.body.password) {
+    console.log('Datos invalidos');
+    res.send('Datos invalidos');    
+  } 
+  else if(req.body.username in users) {
+  
+    users[req.body.username] = bcrypt.hashSync(req.body.password);
+    jsonfile.writeFile(myfile, users, {spaces: 2},  function (err) {
+      console.log(err);
+    });
+    
+    res.send(layout("contraseña cambiada con exito"));
+  }
+  else {
+    res.send(layout(`Usuario ${util.inspect(req.body.username)} o contraseña no valido.`));    
+  }
 });
  
 // Get content endpoint
