@@ -18,7 +18,7 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.set('port', (process.env.PORT))
+app.set('port', (process.env.PORT || 8080));
 
 
 app.set('view engine', 'ejs');
@@ -137,6 +137,15 @@ app.get('/content/*?',
  
 app.use('/content', express.static(path.join(__dirname, 'public')));
 
-app.listen(app.get('port'), function() {
+/*app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
-})
+})*/
+
+var server = app.listen(app.get('port'), function () {
+
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log('Example app listening at http://%s:%s', host, port)
+
+});
