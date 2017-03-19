@@ -3,18 +3,17 @@
 let express = require('express'),
     app = express(),
     session = require('express-session');
+    
+let bcrypt = require("bcrypt-nodejs");
 let cookieParser = require('cookie-parser');
 let path = require('path');
 let util = require("util");
 
-let bcrypt = require("bcrypt-nodejs");
-let hash = bcrypt.hashSync("amyspassword");
-console.log(`amypassword hashed = ${hash}`);
-let users = { 
-  amy : hash, 
-  juan : bcrypt.hashSync("juanpassword"),
-  antonio : bcrypt.hashSync("antoniopassword") 
-};
+let users = require('./users.json');
+let bodyParser = require('body-parser');
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.set('port', (process.env.PORT))
@@ -29,7 +28,7 @@ Visit these urls in the browser:
   <li> <a href="http://localhost:8080/login?username=juan&password=juanpassword">localhost:8080/login?username=juan&password=juanpassword</a> </li>
   <li> <a href="http://localhost:8080/login?username=antonio&password=antoniopassword">localhost:8080/login?username=antonio&password=antoniopassword</a> </li>
   <li> <a href="http://localhost:8080/login?username=pepe&password=pepepassword">localhost:8080/login?username=pepe&password=pepepassword</a> </li>
-  <li> <a href="http://localhost:8080/login?username=amy&password=amyspassword">localhost:8080/login?username=amy&password=amyspassword</a> </li>
+  <li> <a href="http://localhost:8080/login?username=amy&password=amypassword">localhost:8080/login?username=amy&password=amyspassword</a> </li>
   <li> <a href="http://localhost:8080/logout">localhost:8080/logout</a> </li>
 </ul>
 `;
