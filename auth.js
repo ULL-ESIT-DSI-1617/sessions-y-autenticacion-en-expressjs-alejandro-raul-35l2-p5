@@ -18,17 +18,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('port', (process.env.PORT))
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+
+
 let instructions = `
 Visit these urls in the browser:
 <ul>
+  <li> <a href="http://localhost:8080/login">localhost:8080/login</a> </li>
   <li> <a href="http://localhost:8080/content">localhost:8080/content</a> </li>
   <li> <a href="http://localhost:8080/content/git.html">localhost:8080/content/git.html</a> </li>
   <li> <a href="http://localhost:8080/content/cloud9.html">localhost:8080/content/cloud9.html</a> </li>
   <li> <a href="http://localhost:8080/content/sessionsexpress.html">localhost:8080/content/sessionsexpress.html</a> </li>
-  <li> <a href="http://localhost:8080/login?username=juan&password=juanpassword">localhost:8080/login?username=juan&password=juanpassword</a> </li>
-  <li> <a href="http://localhost:8080/login?username=antonio&password=antoniopassword">localhost:8080/login?username=antonio&password=antoniopassword</a> </li>
-  <li> <a href="http://localhost:8080/login?username=pepe&password=pepepassword">localhost:8080/login?username=pepe&password=pepepassword</a> </li>
-  <li> <a href="http://localhost:8080/login?username=amy&password=amypassword">localhost:8080/login?username=amy&password=amyspassword</a> </li>
   <li> <a href="http://localhost:8080/logout">localhost:8080/logout</a> </li>
 </ul>
 `;
@@ -57,19 +58,24 @@ let auth = function(req, res, next) {
 };
 
 
-app.get('/login', function (req, res) {
-  console.log(req.query);
-  if (!req.query.username || !req.query.password) {
+app.get('/login', function(req, res){
+  res.render('login');
+});
+
+
+app.post('/login', function(req, res){
+  console.log(req.body);
+  if (!req.body.username || !req.body.password) {
     console.log('login failed');
     res.send('login failed');    
-  } else if(req.query.username in users  && 
-            bcrypt.compareSync(req.query.password, users[req.query.username])) {
-    req.session.user = req.query.username;
+  } else if(req.body.username in users  && 
+            bcrypt.compareSync(req.body.password, users[req.body.username])) {
+    req.session.user = req.body.username;
     req.session.admin = true;
     res.send(layout("login success! user "+req.session.user));
   } else {
-    console.log(`login ${util.inspect(req.query)} failed`);    
-    res.send(layout(`login ${util.inspect(req.query)} failed. You are ${req.session.user || 'not logged'}`));    
+    console.log(`login ${util.inspect(req.body)} failed`);    
+    res.send(layout(`login ${util.inspect(req.body)} failed. You are ${req.session.user || 'not logged'}`));    
   }
 });
 
@@ -77,6 +83,8 @@ app.get('/login', function (req, res) {
 app.get('/', function(req, res) {
   res.send(instructions);
 });
+
+
 // Logout endpoint
 app.get('/logout', function (req, res) {
   req.session.destroy();
