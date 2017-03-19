@@ -85,10 +85,9 @@ app.get('/', function(req, res) {
 });
 
 
-// Logout endpoint
-app.get('/logout', function (req, res) {
+app.get('/logout', function(req, res){
   req.session.destroy();
-  res.send(layout("logout success!"));
+  res.render('logout');
 });
  
 // Get content endpoint
