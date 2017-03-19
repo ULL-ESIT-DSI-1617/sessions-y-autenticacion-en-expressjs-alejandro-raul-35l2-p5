@@ -28,12 +28,20 @@ app.set('views', __dirname + '/views');
 let instructions = `
 Visit these urls in the browser:
 <ul>
-  <li> <a href="http://localhost:8085/login">localhost:8085/login</a> </li>
-  <li> <a href="http://localhost:8085/content">localhost:8085/content</a> </li>
-  <li> <a href="http://localhost:8085/content/git.html">localhost:8085/content/git.html</a> </li>
-  <li> <a href="http://localhost:8085/content/cloud9.html">localhost:8085/content/cloud9.html</a> </li>
-  <li> <a href="http://localhost:8085/content/sessionsexpress.html">localhost:8085/content/sessionsexpress.html</a> </li>
-  <li> <a href="http://localhost:8085/logout">localhost:8085/logout</a> </li>
+	<li> <a href="/login">Login</a> </li>
+	<li> <a href="/content">Introduccion</a></li>
+	<li> <a href="/content/nodejs.html">1. NodeJS</a></li>
+	<li> <a href="/content/git.html">2. Git</a></li>
+	<li> <a href="/content/github.html">3. GitHub</a></li>
+	<li> <a href="/content/atom.html">4. Atom</a></li>
+	<li> <a href="/content/markdowngitbook.html">5. MarkDown y GitBook</a></li>
+	<li> <a href="/content/ghpagesgulpfile.html">6. Gh-Pages y Gulpfile</a></li>
+	<li> <a href="/content/pandoc.html">7. Pandoc</a></li>
+	<li> <a href="/content/cloud9.html">8. Cloud9</a></li>
+	<li> <a href="/content/rutasexpressjs.html">9. Rutas en ExpressJS</a></li>
+	<li> <a href="/content/cookies.html">10. Cookies</a></li>
+	<li> <a href="/content/sessionsexpress.html">11. Sessions en ExpressJS</a></li>
+	<li> <a href="/logout">Logout</a> </li>
 </ul>
 `;
 
